@@ -19,18 +19,3 @@ server/
     index.js
   package.json
 ```
-
-## client
-* CRA eject
-* 주석 간략화
-* atom 디자인
-* 프록시
-
-## server
-* express
-* api
-* static file
-* error handler
-* babel
-* nodemon
-* eslint
