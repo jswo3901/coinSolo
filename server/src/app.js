@@ -3,14 +3,14 @@ import path from 'path'
 
 const app = express()
 
-// 정적 파일 제공 경로 - 클라이언트 빌드파일 직접 제공받게 설정
+// @지호 정적 파일 제공 경로 - 클라이언트 빌드파일 직접 제공받게 설정
 app.use(express.static(path.join(__dirname, '..', '..', '/client/public')))
 
-// api
+// @지호 api
 const api = require('./api')
 app.use('/api', api)
 
-// 에러핸들러
+// @지호 에러핸들러
 app.use(function(req, res, next) {
   var err = new Error('Not Found')
   err.status = 404

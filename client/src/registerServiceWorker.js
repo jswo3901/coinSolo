@@ -1,4 +1,4 @@
-// 배포시 등록되는 서비스워커
+// @CRA 배포시 등록되는 서비스워커
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
@@ -12,7 +12,7 @@ export default function register() {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
     if (publicUrl.origin !== window.location.origin) {
-      // PUBLIC_URL을 변경하시면 제대로 작동안합니다
+      // @CRA PUBLIC_URL을 변경하시면 제대로 작동안합니다
       return;
     }
 

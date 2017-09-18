@@ -26,16 +26,16 @@ const measureFileSizesBeforeBuild =
 const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild;
 const useYarn = fs.existsSync(paths.yarnLockFile);
 
-// 이거보다 파일이 크면 이상하다..
+// @CRA 이거보다 파일이 크면 이상하다..
 const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
 const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
 
-// 필요없는 파일이 감지되면 경고
+// @CRA 필요없는 파일이 감지되면 경고
 if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
 }
 
-// 파일 변경된 정도 계산
+// @CRA 파일 변경된 정도 계산
 measureFileSizesBeforeBuild(paths.appBuild)
   .then(previousFileSizes => {
     fs.emptyDirSync(paths.appBuild);
@@ -54,7 +54,7 @@ measureFileSizesBeforeBuild(paths.appBuild)
         );
         console.log(
           'To ignore, add ' +
-            chalk.cyan('// eslint-disable-next-line') +
+            chalk.cyan('// @CRA eslint-disable-next-line') +
             ' to the line before.\n'
         );
       } else {
@@ -90,7 +90,7 @@ measureFileSizesBeforeBuild(paths.appBuild)
     }
   );
 
-// 빌드
+// @CRA 빌드
 function build(previousFileSizes) {
   console.log('Creating an optimized production build...');
 

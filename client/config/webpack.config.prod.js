@@ -13,74 +13,74 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 
-// public path
+// @CRA public path
 const publicPath = paths.servedPath;
-// 클라이언트 사이드 라우팅 사용하지 않을 경우를 위해
+// @CRA 클라이언트 사이드 라우팅 사용하지 않을 경우를 위해
 const shouldUseRelativeAssetPaths = publicPath === './';
-// 소스맵은 너무 용량이 크니까 배포 환경에서는 제외
+// @CRA 소스맵은 너무 용량이 크니까 배포 환경에서는 제외
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
-// publicURL 환경변수 사용
+// @CRA publicURL 환경변수 사용
 const publicUrl = publicPath.slice(0, -1);
 const env = getClientEnvironment(publicUrl);
 
-// 안전합니다
+// @CRA 안전합니다
 if (env.stringified['process.env'].NODE_ENV !== '"production"') {
   throw new Error('Production builds must have NODE_ENV=production.');
 }
 
-// 두번 이상 사용되므로 반드시 여기에 작성해야 한다
+// @CRA 두번 이상 사용되므로 반드시 여기에 작성해야 한다
 const cssFilename = 'static/css/[name].[contenthash:8].css';
 
-// 빌드 시 폴더구조 갖추려면
+// @CRA 빌드 시 폴더구조 갖추려면
 const extractTextPluginOptions = shouldUseRelativeAssetPaths
   ?
     { publicPath: Array(cssFilename.split('/').length).join('../') }
   : {};
 
-// 컴파일은 느리겠지만 작게만들기 위함이에요
+// @CRA 컴파일은 느리겠지만 작게만들기 위함이에요
 module.exports = {
-  // 에러있으면 바로 멈추게
+  // @CRA 에러있으면 바로 멈추게
   bail: true,
-  // 맵파일 있으면 좋긴한데 없앨 수 있습니다
+  // @CRA 맵파일 있으면 좋긴한데 없앨 수 있습니다
   devtool: shouldUseSourceMap ? 'source-map' : false,
-  // 폴리필 로드
+  // @CRA 폴리필 로드
   entry: [require.resolve('./polyfills'), paths.appIndexJs],
   output: {
-    // 빌드폴더 경로
+    // @CRA 빌드폴더 경로
     path: paths.appBuild,
-    // JS파일 이름 생성
-    // CRA는 코드분할을 지원하고 있지는 않지만 웹팩은 가능하긴 합니다
+    // @CRA JS파일 이름 생성
+    // @CRA CRA는 코드분할을 지원하고 있지는 않지만 웹팩은 가능하긴 합니다
     filename: 'static/js/[name].[chunkhash:8].js',
     chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
     publicPath: publicPath,
-    // 소스맵 시작점
+    // @CRA 소스맵 시작점
     devtoolModuleFilenameTemplate: info =>
       path
         .relative(paths.appSrc, info.absoluteResourcePath)
         .replace(/\\/g, '/'),
   },
   resolve: {
-    // 노드모듈 찾기
+    // @CRA 노드모듈 찾기
     modules: ['node_modules', paths.appNodeModules].concat(
       process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
     ),
-  // JSX지원 확장자
+  // @CRA JSX지원 확장자
     extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-      // react-native 지원
+      // @CRA react-native 지원
       'react-native': 'react-native-web',
     },
     plugins: [
-      // 소스 밖에 쓸데없는 파일 로드되지 않게
+      // @CRA 소스 밖에 쓸데없는 파일 로드되지 않게
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
     ],
   },
   module: {
     strictExportPresence: true,
     rules: [
-      // 표준이 아니라서 잠시 막아놨음
-      // { parser: { requireEnsure: false } },
-      // eslint
+      // @CRA 표준이 아니라서 잠시 막아놨음
+      // @CRA { parser: { requireEnsure: false } },
+      // @CRA eslint
       {
         test: /\.(js|jsx)$/,
         enforce: 'pre',
@@ -97,9 +97,9 @@ module.exports = {
         include: paths.appSrc,
       },
       {
-        // 알맞는 로더 찾기
+        // @CRA 알맞는 로더 찾기
         oneOf: [
-          // url 로더
+          // @CRA url 로더
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
             loader: require.resolve('url-loader'),
@@ -108,7 +108,7 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
-          // 바벨링
+          // @CRA 바벨링
           {
             test: /\.(js|jsx)$/,
             include: paths.appSrc,
@@ -118,7 +118,7 @@ module.exports = {
               compact: true,
             },
           },
-          // 배포환경에서는 css파일 분리되니까 JS에 삽입해서 넣는것 추천
+          // @CRA 배포환경에서는 css파일 분리되니까 JS에 삽입해서 넣는것 추천
           {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract(
@@ -137,7 +137,7 @@ module.exports = {
                     {
                       loader: require.resolve('postcss-loader'),
                       options: {
-                        // 외부 css삽입 위해
+                        // @CRA 외부 css삽입 위해
                         ident: 'postcss',
                         plugins: () => [
                           require('postcss-flexbugs-fixes'),
@@ -146,7 +146,7 @@ module.exports = {
                               '>1%',
                               'last 4 versions',
                               'Firefox ESR',
-                              'not ie < 9', // React doesn't support IE8 anyway
+                              'not ie < 9', // @CRA React doesn't support IE8 anyway
                             ],
                             flexbox: 'no-2009',
                           }),
@@ -158,26 +158,26 @@ module.exports = {
                 extractTextPluginOptions
               )
             ),
-            // 플러그인에 `new ExtractTextPlugin()` 가 없으면 작동 안합니다
+            // @CRA 플러그인에 `new ExtractTextPlugin()` 가 없으면 작동 안합니다
           },
           
           {
             loader: require.resolve('file-loader'),
-          //파일로더
+          // @CRA파일로더
             exclude: [/\.js$/, /\.html$/, /\.json$/],
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
-          // 로더 추가하려면 파일로더 위에 추가하세요 여기아니에요
+          // @CRA 로더 추가하려면 파일로더 위에 추가하세요 여기아니에요
         ],
       },
     ],
   },
   plugins: [
-    // 환경변수
+    // @CRA 환경변수
     new InterpolateHtmlPlugin(env.raw),
-    // html에 스크립트 추가
+    // @CRA html에 스크립트 추가
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
@@ -194,9 +194,9 @@ module.exports = {
         minifyURLs: true,
       },
     }),
-    // 환경변수
+    // @CRA 환경변수
     new webpack.DefinePlugin(env.stringified),
-    // 코드 경량화
+    // @CRA 코드 경량화
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
@@ -208,15 +208,15 @@ module.exports = {
       },
       sourceMap: shouldUseSourceMap,
     }),
-    // 로더스에 ExtractTextPlugin.extract(..) 없으면 작동 안합니다
+    // @CRA 로더스에 ExtractTextPlugin.extract(..) 없으면 작동 안합니다
     new ExtractTextPlugin({
       filename: cssFilename,
     }),
-    // 매니페스트 파일 생성.. 
+    // @CRA 매니페스트 파일 생성.. 
     new ManifestPlugin({
       fileName: 'asset-manifest.json',
     }),
-    // 서비스 워커 생성
+    // @CRA 서비스 워커 생성
     new SWPrecacheWebpackPlugin({
       dontCacheBustUrlsMatching: /\.\w{8}\./,
       filename: 'service-worker.js',
@@ -230,17 +230,17 @@ module.exports = {
         console.log(message);
       },
       minify: true,
-      // URL 모르겠으면 index로
+      // @CRA URL 모르겠으면 index로
       navigateFallback: publicUrl + '/index.html',
-      // /__ 로 시작하는 URL 무시하기
+      // @CRA /__ 로 시작하는 URL 무시하기
       navigateFallbackWhitelist: [/^(?!\/__).*/],
-      // 소스맵파일 프리캐싱 막기 
+      // @CRA 소스맵파일 프리캐싱 막기 
       staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
     }),
-    // MOMENT.JS 사용하기 위한 설정
+    // @CRA MOMENT.JS 사용하기 위한 설정
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ],
-  // 브라우저에서 사용 안하는 모듈들
+  // @CRA 브라우저에서 사용 안하는 모듈들
   node: {
     dgram: 'empty',
     fs: 'empty',
