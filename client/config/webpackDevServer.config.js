@@ -10,28 +10,28 @@ const host = process.env.HOST || '0.0.0.0';
 
 module.exports = function(proxy, allowedHost) {
   return {
-    // @CRA 커스텀 웹팩데브서버
+    // 커스텀 웹팩데브서버
     disableHostCheck:
       !proxy || process.env.DANGEROUSLY_DISABLE_HOST_CHECK === 'true',
-    // @CRA gzip 압축
+    // gzip 압축
     compress: true,
-    // @CRA 오류로그 숨기기
+    // 오류로그 숨기기
     clientLogLevel: 'none',
-    // @CRA `index.html`에서는 % PUBLIC_URL %로 자바 스크립트 코드에서는 `process.env.PUBLIC_URL`을 사용해 `public` 폴더 접근 가능
-    // @CRA 프로젝트 폴더 전체 배포하지말고 public에 있는 파일들만 서비스 합시다
+    // `index.html`에서는 % PUBLIC_URL %로 자바 스크립트 코드에서는 `process.env.PUBLIC_URL`을 사용해 `public` 폴더 접근 가능
+    // 프로젝트 폴더 전체 배포하지말고 public에 있는 파일들만 서비스 합시다
     contentBase: paths.appPublic,
-    // @CRA contentBase에 있는 파일들은 지켜보지 않습니다
+    // contentBase에 있는 파일들은 지켜보지 않습니다
     watchContentBase: true,
-    // @CRA 핫로딩기능
+    // 핫로딩기능
     hot: true,
-    // @CRA 루트패스 설정
+    // 루트패스 설정
     publicPath: config.output.publicPath,
-    // @CRA 데브서버 로그 끄기
+    // 데브서버 로그 끄기
     quiet: true,
     watchOptions: {
       ignored: /node_modules/,
     },
-    // @CRA HTTPS 환경변수를 true로 설정할 경우 HTTPS 사용 가능
+    // HTTPS 환경변수를 true로 설정할 경우 HTTPS 사용 가능
     https: protocol === 'https',
     host: host,
     overlay: false,
@@ -41,9 +41,9 @@ module.exports = function(proxy, allowedHost) {
     public: allowedHost,
     proxy,
     setup(app) {
-      // @CRA 런타임 오류 생겨도 파일 열도록
+      // 런타임 오류 생겨도 파일 열도록
       app.use(errorOverlayMiddleware());
-      // @CRA 포트, 호스트 기억
+      // 포트, 호스트 기억
       app.use(noopServiceWorkerMiddleware());
     },
   };

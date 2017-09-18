@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class App extends Component {
+class HomePage extends Component {
   render() {
     return (
-      <div className="App">
-        하잉
+      <div>
+        홈입니다
       </div>
     );
   }
 }
 
-export default App;
+export default HomePage;

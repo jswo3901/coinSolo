@@ -1,6 +1,6 @@
 'use strict';
 
-// @CRA 환경변수와 각종 경로 설정들
+// 환경변수와 각종 경로 설정들
 
 const path = require('path');
 const fs = require('fs');

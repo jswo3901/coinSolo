@@ -16,12 +16,12 @@ if (!NODE_ENV) {
 var dotenvFiles = [
   `${paths.dotenv}.${NODE_ENV}.local`,
   `${paths.dotenv}.${NODE_ENV}`,
-  // @CRA .env.local 파일을 포함하지마세요 
+  // .env.local 파일을 포함하지마세요 
   NODE_ENV !== 'test' && `${paths.dotenv}.local`,
   paths.dotenv,
 ].filter(Boolean);
 
-// @CRA 환경변수 불러옵니다 
+// 환경변수 불러옵니다 
 dotenvFiles.forEach(dotenvFile => {
   if (fs.existsSync(dotenvFile)) {
     require('dotenv').config({
@@ -30,7 +30,7 @@ dotenvFiles.forEach(dotenvFile => {
   }
 });
 
-// @CRA `NODE_PATH` 지원합니다 
+// `NODE_PATH` 지원합니다 
 const appDirectory = fs.realpathSync(process.cwd());
 process.env.NODE_PATH = (process.env.NODE_PATH || '')
   .split(path.delimiter)
@@ -49,7 +49,7 @@ function getClientEnvironment(publicUrl) {
         return env;
       },
       {
-        // @CRA 개발 - 배포 환경 감지
+        // 개발 - 배포 환경 감지
         NODE_ENV: process.env.NODE_ENV || 'development',
         PUBLIC_URL: publicUrl,
       }

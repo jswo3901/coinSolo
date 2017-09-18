@@ -3,6 +3,7 @@ const test = require('express').Router()
 
 test.route('/')
   .get(testCtrl.getTest)
+  .post(testCtrl.postTest)
 
 test.route('/:id')
   .get(testCtrl.getTestId)

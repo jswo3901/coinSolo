@@ -33,11 +33,11 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
 }
 
-// @CRA 클라우드 나인용 설정
+// 클라우드 나인용 설정
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
 
-// @CRA 자동으로 빈포트 찾기
+// 자동으로 빈포트 찾기
 
 choosePort(HOST, DEFAULT_PORT)
   .then(port => {
@@ -48,7 +48,7 @@ choosePort(HOST, DEFAULT_PORT)
     const appName = require(paths.appPackageJson).name;
     const urls = prepareUrls(protocol, HOST, port);
     const compiler = createCompiler(webpack, config, appName, urls, useYarn);
-    // @CRA 프록시 설정 로드
+    // 프록시 설정 로드
     const proxySetting = require(paths.appPackageJson).proxy;
     const proxyConfig = prepareProxy(proxySetting, paths.appPublic);
     const serverConfig = createDevServerConfig(
@@ -56,7 +56,7 @@ choosePort(HOST, DEFAULT_PORT)
       urls.lanUrlForConfig
     );
     const devServer = new WebpackDevServer(compiler, serverConfig);
-    // @CRA 데부서버 작동
+    // 데부서버 작동
     devServer.listen(port, HOST, err => {
       if (err) {
         return console.log(err);

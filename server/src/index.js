@@ -3,7 +3,7 @@ import http from 'http'
 
 const server = http.createServer(app)
 
-// @지호 서버 연결
+// 서버 연결
 
 server.listen(3001, function() {
   console.log('server is connected on port 3001!!!')
