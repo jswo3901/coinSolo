@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './style.css'
 
-const TestTemplate = ({ children, firstDiv, secondDiv, thirdDiv }) => {
+const HomeTemplate = ({ children, firstDiv, secondDiv, thirdDiv }) => {
   return (
     <div className={style.bigDiv}>
       <div className={style.firstDiv}>{firstDiv}</div>
@@ -12,4 +12,4 @@ const TestTemplate = ({ children, firstDiv, secondDiv, thirdDiv }) => {
   )
 };
 
-export default TestTemplate;
+export default HomeTemplate;

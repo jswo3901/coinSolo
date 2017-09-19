@@ -5,7 +5,7 @@ class Create extends Component {
   constructor() {
     super();
     this.state = {
-      contents:''  
+      nameInput:''  
     }
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -19,20 +19,22 @@ class Create extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { contents } = this.state;
-    axios.get('/api/test', { contents })
-      .then((result) => {
-        console.log(result)
-      });
-  }
+    
+    const { nameInput } = this.state;
+
+    axios.post('/api/user', 
+      {
+        nameInput: nameInput
+      })
+    }
   
   render() {
-    const { contents } = this.state;
+    const { nameInput } = this.state;
 
     return (
       <div>
         <form onSubmit={this.onSubmit}>
-          Create Data : <input type="text" name="contents" value={contents} onChange={this.onChange} /><br />
+          Create Data : <input type="text" name="nameInput" value={nameInput} onChange={this.onChange} /><br />
           <button type="submit">Create</button>
         </form>
       </div>

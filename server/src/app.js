@@ -1,21 +1,20 @@
 import express from 'express'
 import path from 'path'
-import db from './db/db.js'
 
 const app = express()
+
+const bodyParser = require('body-parser')
+
+// body-parser
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // 클라이언트 빌드파일 직접 제공받게 설정
 app.use(express.static(path.resolve(__dirname, '..', 'public')))
 
-// 배포시 : CRA build -> server/public으로 이동
-// app.get('*', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '..', 'index.html'))
-// })
-
 // api
 const api = require('./api')
 app.use('/api', api)
-
 
 // 에러핸들러
 app.use(function(req, res, next) {

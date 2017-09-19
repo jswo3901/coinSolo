@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { HomePage, TestPage, NotFoundPage} from 'components'
+import { HomePage, NotFoundPage} from 'components'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
@@ -9,7 +9,6 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path='/' component={HomePage} />
-            <Route path='/test' component={TestPage} />
             <Route component={NotFoundPage} />
           </Switch>
         </div>

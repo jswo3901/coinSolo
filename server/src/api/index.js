@@ -1,7 +1,7 @@
-const test = require('./test')
+const user = require('./user')
 
 const api = require('express').Router()
 
-api.use('/test', test)
+api.use('/user', user)
 
 module.exports = api
