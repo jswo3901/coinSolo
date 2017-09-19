@@ -2,13 +2,13 @@
 ## README2
 ### README3
 #### README4  
-샾(#) 1개면 글자크기 제일크고 4개면 제일작음 아래형식 유지
+샵(#) 1개면 글자크기 제일크고 4개면 제일작음 아래형식 유지
 
 
-### React Native  
+### React Native(샵3개)  
 
 
-#### Tutorials
+#### Tutorials(샵4개)
 
 - **리액트 native**  
   http://www.reactnativeexpress.com/  
