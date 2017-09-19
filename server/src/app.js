@@ -1,5 +1,6 @@
 import express from 'express'
 import path from 'path'
+import db from './db/db.js'
 
 const app = express()
 
@@ -14,6 +15,7 @@ app.use(express.static(path.resolve(__dirname, '..', 'public')))
 // api
 const api = require('./api')
 app.use('/api', api)
+
 
 // 에러핸들러
 app.use(function(req, res, next) {
