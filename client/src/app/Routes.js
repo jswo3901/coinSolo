@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { HomeView, NotFoundView} from 'app'
+import { HomeView, NotFoundView } from 'app'
 import { Route, Switch } from 'react-router-dom';
 
 class Routes extends Component {
