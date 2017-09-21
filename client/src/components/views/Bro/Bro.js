@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import * as actions from './actions';
 import { connect } from 'react-redux';
 
-import { getRandomColor } from './lib/utils';
+import { getRandomColor } from '../../lib/utils';
 
 // 컴포넌트 파트
 export function Bro ({number, color, onDecrement, onIncrement, onSetColor}) {
