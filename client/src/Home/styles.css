@@ -1,0 +1,70 @@
+.atomDiv{
+  border: solid black 1px;
+  float: left;
+  width: 33%;
+  height: 20rem;
+}
+
+.broDiv{
+  border: solid black 1px;
+  float: left;
+  width: 33%;
+  height: 20rem;
+  background-color: silver
+}
+
+.cuteDiv{
+  border: solid black 1px;
+  float: left;
+  width: 33%;
+  height: 20rem;
+}
+
+.broButton{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.add{
+  background: #37b24d;
+}
+
+.add:hover{
+  background: #40c057;
+}
+
+.remove{
+  background: #f03e3e;
+}
+
+.remove:hover{
+  background: #fa5252;
+}
+
+.homeBroCircle {
+  /* 레이아웃 */
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+
+   /* 색상 */
+  color: white;
+
+  /* 폰트 */
+  font-size: 2rem;
+
+  /* 기타 */
+  border-radius: 100%;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.75s;
+}

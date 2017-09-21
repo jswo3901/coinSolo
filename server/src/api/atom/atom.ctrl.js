@@ -2,11 +2,11 @@ const Atom = require('db/models/Atom')
 
 exports.postAtom = (req, res) => {
   const {
-    nameInput
+    contents
   } = req.body
 
   const newAtom = new Atom({
-    name: nameInput
+    contents: contents
   })
 
   newAtom.save((err) => {

@@ -4,18 +4,18 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 
-import App from './App'
+import App from 'App'
 import registerServiceWorker from './registerServiceWorker';
 
 //스토어 임시경로
-import reducers from './app/components/Bro/reducers';
-const store = createStore(reducers);
+// import reducers from './test/components/Cute/reducers';
+// const store = createStore(reducers);
 
 ReactDOM.render(
-  <Provider store={store}>
+  // <Provider store={store}>
     <App />
-  </Provider>,
-  document.getElementById('root')
+  // </Provider>
+  ,document.getElementById('root')
 );
 
 registerServiceWorker();

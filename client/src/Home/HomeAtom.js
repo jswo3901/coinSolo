@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class Atom extends Component {
+class HomeAtom extends Component {
   constructor() {
     super();
     this.state = {
-      nameInput:''  
+      contents:''  
     }
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -20,25 +20,25 @@ class Atom extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     
-    const { nameInput } = this.state;
+    const { contents } = this.state;
 
     axios.post('/api/atom', 
       {
-        nameInput: nameInput
+        contents: contents
       })
     }
   
   render() {
-    const { nameInput } = this.state;
+    const { contents } = this.state;
 
     return (
       <div>
         <form onSubmit={this.onSubmit}>
-          <input type="text" name="nameInput" value={nameInput} onChange={this.onChange} /><button type="submit">submit</button>
+          <input type="text" name="contents" value={contents} onChange={this.onChange} /><button type="submit">submit</button>
         </form>
       </div>
     );
   }
 }
 
-export default Atom;
+export default HomeAtom;
