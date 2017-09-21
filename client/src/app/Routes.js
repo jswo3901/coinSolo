@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { HomePage, NotFoundPage} from 'app'
+import { HomeView, NotFoundView} from 'app'
 import { Route, Switch } from 'react-router-dom';
 
 class Routes extends Component {
@@ -7,8 +7,8 @@ class Routes extends Component {
     return (
         <div>
           <Switch>
-            <Route exact path='/' component={HomePage} />
-            <Route component={NotFoundPage} />
+            <Route exact path='/' component={HomeView} />
+            <Route component={NotFoundView} />
           </Switch>
         </div>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import style from './style.css'
 import {Atom, Bro} from 'app'
 
-const HomePage = () => {
+const HomeView = () => {
   return (
     <div>
       <div className={style.firstDiv}><Atom /></div>
@@ -12,4 +12,4 @@ const HomePage = () => {
   )
 };
 
-export default HomePage;
+export default HomeView;
