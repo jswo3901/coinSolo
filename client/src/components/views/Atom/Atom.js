@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class Create extends Component {
+class Atom extends Component {
   constructor() {
     super();
     this.state = {
@@ -34,12 +34,11 @@ class Create extends Component {
     return (
       <div>
         <form onSubmit={this.onSubmit}>
-          Create Data : <input type="text" name="nameInput" value={nameInput} onChange={this.onChange} /><br />
-          <button type="submit">Create</button>
+          <input type="text" name="nameInput" value={nameInput} onChange={this.onChange} /><button type="submit">submit</button>
         </form>
       </div>
     );
   }
 }
 
-export default Create;
+export default Atom;

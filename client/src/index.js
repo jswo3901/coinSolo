@@ -1,7 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// 리덕스
+import { Provider } from 'react-redux';
+import { createStore } from 'redux'
+
 import App from './App'
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//스토어
+import reducers from './components/views/Bro/reducers';
+const store = createStore(reducers);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+
 registerServiceWorker();
