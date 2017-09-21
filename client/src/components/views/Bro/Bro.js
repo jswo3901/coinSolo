@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 import { getRandomColor } from './lib/utils';
 
+// 컴포넌트 파트
 export function Bro ({number, color, onDecrement, onIncrement, onSetColor}) {
   return (
     <div>
@@ -44,6 +45,8 @@ Bro.defaultProps = {
   onSetColor: () => console.warn('onSetColor not defined')
 };
 
+
+// 컨테이너 파트
 const mapStateToProps = (state) => ({
   color: state.color,
   number: state.number
@@ -58,6 +61,5 @@ const mapDispatchToProps = (dispatch) => ({
 }
 });
 
-// Counter 컴포넌트의 Container 컴포넌트
-// Counter 컴포넌트를 어플리케이션의 데이터 레이어와 묶는 역할을 합니다.
+// 컴포넌트를 어플리케이션의 데이터레이어와 결합
 export default connect(mapStateToProps, mapDispatchToProps)(Bro);

@@ -7,7 +7,7 @@ import { createStore } from 'redux'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker';
 
-//스토어
+//스토어 임시경로
 import reducers from './components/views/Bro/reducers';
 const store = createStore(reducers);
 
