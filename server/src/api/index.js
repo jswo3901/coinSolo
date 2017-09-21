@@ -1,7 +1,7 @@
-const user = require('./user')
+const atom = require('./atom')
 
 const api = require('express').Router()
 
-api.use('/user', user)
+api.use('/atom', atom)
 
 module.exports = api

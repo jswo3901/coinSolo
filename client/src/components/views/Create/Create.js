@@ -22,7 +22,7 @@ class Create extends Component {
     
     const { nameInput } = this.state;
 
-    axios.post('/api/user', 
+    axios.post('/api/atom', 
       {
         nameInput: nameInput
       })

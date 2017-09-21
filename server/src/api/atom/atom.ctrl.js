@@ -1,15 +1,15 @@
-const User = require('db/models/User')
+const Atom = require('db/models/Atom')
 
-exports.postUser = (req, res) => {
+exports.postAtom = (req, res) => {
   const {
     nameInput
   } = req.body
 
-  const newUser = new User({
+  const newAtom = new Atom({
     name: nameInput
   })
 
-  newUser.save((err) => {
+  newAtom.save((err) => {
     if (err) {
       console.error(err)
     } else {

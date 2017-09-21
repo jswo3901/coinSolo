@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
 import { HomePage, NotFoundPage} from 'components'
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
-class App extends Component {
+class Routes extends Component {
   render() {
     return (
-      <BrowserRouter>
         <div>
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route component={NotFoundPage} />
           </Switch>
         </div>
-      </BrowserRouter>
     );
   }
 }
 
-export default App
+export default Routes

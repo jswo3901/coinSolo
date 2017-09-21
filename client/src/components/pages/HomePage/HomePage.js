@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
-import {HomeTemplate, Create, Test} from 'components'
+import React from 'react';
+import style from './style.css'
+import {Create} from 'components'
 
-class HomePage extends Component {
-  render() {
-    return (
-      <div>
-        <HomeTemplate
-          firstDiv={<Create/>}
-          secondDiv={<Test/>}
-          thirdDiv={<Test/>}
-        >
-        </HomeTemplate>
-      </div>
-    );
-  }
-}
+const HomePage = () => {
+  return (
+    <div>
+      <div className={style.firstDiv}><Create /></div>
+      <div className={style.secondDiv}></div>
+      <div className={style.thirdDiv}></div>
+    </div>
+  )
+};
 
 export default HomePage;

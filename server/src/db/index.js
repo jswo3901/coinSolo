@@ -4,7 +4,7 @@ module.exports = (function () {
   mongoose.Promise = global.Promise
   return {
     connect() {
-      return mongoose.connect('mongodb://localhost/coinapp', {
+      return mongoose.connect('mongodb://localhost/coinApp', {
         useMongoClient: true
       }).then(
         console.log('mongodb is connected!!')

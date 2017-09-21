@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { NotFound } from 'components'
 
 class NotFoundPage extends Component {
   render() {
     return (
       <div>
-        클라이언트에러입니당
+        <NotFound />
       </div>
     );
   }
