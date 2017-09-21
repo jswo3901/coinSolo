@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './style.css'
-import {Atom, Bro} from 'components'
+import {Atom, Bro} from 'app'
 
 const HomePage = () => {
   return (

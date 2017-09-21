@@ -8,7 +8,7 @@ import App from './App'
 import registerServiceWorker from './registerServiceWorker';
 
 //스토어 임시경로
-import reducers from './components/views/Bro/reducers';
+import reducers from './app/components/Bro/reducers';
 const store = createStore(reducers);
 
 ReactDOM.render(

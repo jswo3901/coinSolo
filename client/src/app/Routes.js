@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { HomePage, NotFoundPage} from 'components'
+import { HomePage, NotFoundPage} from 'app'
 import { Route, Switch } from 'react-router-dom';
 
 class Routes extends Component {

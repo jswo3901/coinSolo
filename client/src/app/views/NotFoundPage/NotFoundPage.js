@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NotFound } from 'components'
+import { NotFound } from 'app'
 
 class NotFoundPage extends Component {
   render() {
