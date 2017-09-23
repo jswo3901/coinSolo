@@ -1,4 +1,4 @@
-const Atom = require('db/models/Atom')
+const Atom = require('db/models/atom')
 
 exports.postAtom = (req, res) => {
   const {
@@ -14,6 +14,16 @@ exports.postAtom = (req, res) => {
       console.error(err)
     } else {
       console.log('굿')
+    }
+  })
+}
+
+exports.getAtom = (req, res) => {
+  Atom.find((err, atoms) => {
+    if (err) {
+      console.error(err)
+    } else {
+      res.json(atoms)
     }
   })
 }
