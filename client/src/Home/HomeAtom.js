@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-const HomeAtomContentList = ({ loadData }) => {
+const HomeAtomContentList = ({ getContents, contentList, id }) => {
+  const clickDelete = () => {
+    axios.delete('/api/atom/' + id)
+  }
+
   return (
-      <li>{loadData}</li>
+    <div>
+      <li>{contentList}</li><button onClick={clickDelete}>삭제</button>
+    </div>
   );
 };
 
@@ -12,7 +18,7 @@ class HomeAtom extends Component {
     super();
     this.state = {
       contents: '',
-      dbContents: []
+      contentsList: []
     }
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -22,7 +28,7 @@ class HomeAtom extends Component {
     axios.get('/api/atom')
       .then((response) => {
         this.setState({
-          dbContents: response.data
+          contentsList: response.data
         })
       })
       .catch((error) => {
@@ -52,17 +58,19 @@ class HomeAtom extends Component {
   }
 
   render() {
-    const { contents, dbContents } = this.state;
-
+    const { contents, contentsList } = this.state;
+    const { getContents } = this
     return (
       <div>
         <form onSubmit={this.onSubmit}>
           <input type="text" name="contents" value={contents} onChange={this.onChange} /><button type="submit">submit</button>
         </form>
         <ul>
-          {dbContents.map((dbContent, i) => {
-            return (<HomeAtomContentList 
-              loadData={dbContent.contents}
+          {contentsList.map((contentsList, i) => {
+            return (<HomeAtomContentList
+              contentList={contentsList.contents}
+              id={contentsList._id}
+              getContents={getContents}
               key={i} />);
           })}
         </ul>

@@ -19,11 +19,17 @@ exports.postAtom = (req, res) => {
 }
 
 exports.getAtom = (req, res) => {
-  Atom.find({}, {_id: 0, contents: 1}, (err, atoms) => {
+  Atom.find({}, {_id: 1, contents: 1}, (err, atoms) => {
     if (err) {
       console.error(err)
     } else {
       res.json(atoms)
     }
+  })
+}
+
+exports.deleteAtom = (req, res) => {
+  Atom.remove({_id: req.params.id}, (err) => {
+    if (err) return console.error(err)
   })
 }

@@ -1,4 +1,4 @@
-const Cute = require('db/models/Cute')
+const Cute = require('db/models/cute')
 
 exports.postCute = (req, res) => {
   const {
