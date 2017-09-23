@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import styles from './styles.css'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as homeBroActions from './HomeBro.controller'
+import * as homeActions from './controller'
 import { getRandomColor } from 'lib';
 
 // props 상속 설정
@@ -31,18 +31,18 @@ const HomeBroCircle = ({ color, number, onIncrement, onDecrement, onSetcolor}) =
 // 렌더(컨테이너로 감싼다)
 class HomeBro extends Component {
   handleIncrement = () => {
-    const { HomeBroActions } = this.props
-    HomeBroActions.increment()
+    const { homeActions } = this.props
+    homeActions.increment()
   }
   handleDecrement = () => {
-    const { HomeBroActions } = this.props
-    HomeBroActions.decrement()
+    const { homeActions } = this.props
+    homeActions.decrement()
   }
 
   handleSetcolor = () => {
-    const { HomeBroActions } = this.props
+    const { homeActions } = this.props
     const color = getRandomColor()
-    HomeBroActions.set_color({color})
+    homeActions.set_color({color})
   }
   
   render() {
@@ -71,12 +71,11 @@ class HomeBro extends Component {
 
 // 컨테이너 파트
 export default connect(
-// 스테이트 전달
   (state) => ({
-  number: state.HomeBroController.get('number'),
-  color: state.HomeBroController.get('color'),
+    number: state.homeController.getIn(['homeBro', 'number']),
+    color: state.homeController.getIn(['homeBro', 'color']),
   }),
   (dispatch) => ({
-      HomeBroActions: bindActionCreators(homeBroActions, dispatch)
+    homeActions: bindActionCreators(homeActions, dispatch)
   })
 )(HomeBro);
