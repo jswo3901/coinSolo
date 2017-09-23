@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+const HomeAtomContentList = ({ loadData }) => {
+  return (
+      <li>{loadData}</li>
+  );
+};
+
 class HomeAtom extends Component {
   constructor() {
     super();
     this.state = {
-      contents:'',
-      dbContents:''
+      contents: '',
+      dbContents: []
     }
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -14,18 +20,18 @@ class HomeAtom extends Component {
 
   getContents = () => {
     axios.get('/api/atom')
-    .then((response) => {
-      this.setState({
-        dbContents: response.data[0].contents
+      .then((response) => {
+        this.setState({
+          dbContents: response.data
+        })
       })
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   componentDidMount() {
-    this.getContents(); 
+    this.getContents();
   }
 
   onChange = (e) => {
@@ -36,15 +42,15 @@ class HomeAtom extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    
+
     const { contents } = this.state;
 
-    axios.post('/api/atom', 
+    axios.post('/api/atom',
       {
         contents: contents
       })
   }
-  
+
   render() {
     const { contents, dbContents } = this.state;
 
@@ -54,7 +60,11 @@ class HomeAtom extends Component {
           <input type="text" name="contents" value={contents} onChange={this.onChange} /><button type="submit">submit</button>
         </form>
         <ul>
-          <li>{dbContents}</li>
+          {dbContents.map((dbContent, i) => {
+            return (<HomeAtomContentList 
+              loadData={dbContent.contents}
+              key={i} />);
+          })}
         </ul>
       </div>
     );

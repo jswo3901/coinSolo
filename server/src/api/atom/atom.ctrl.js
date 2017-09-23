@@ -19,7 +19,7 @@ exports.postAtom = (req, res) => {
 }
 
 exports.getAtom = (req, res) => {
-  Atom.find((err, atoms) => {
+  Atom.find({}, {_id: 0, contents: 1}, (err, atoms) => {
     if (err) {
       console.error(err)
     } else {
