@@ -5,7 +5,6 @@ const HomeAtomContentList = ({ getContents, contentList, id }) => {
   const clickDelete = () => {
     axios.delete('/api/atom/' + id)
   }
-
   return (
     <div>
       <li>{contentList}</li><button onClick={clickDelete}>삭제</button>
