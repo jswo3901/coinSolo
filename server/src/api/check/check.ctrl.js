@@ -11,3 +11,4 @@ exports.check = (req, res) => {
     info: req.decoded
   })
 }
+// 미들웨어 만들어서 간단해졌음.
