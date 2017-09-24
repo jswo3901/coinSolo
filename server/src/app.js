@@ -2,16 +2,21 @@ import express from 'express'
 import path from 'path'
 
 const app = express()
-
+const config = require('./db/dbconfig.js')
 const bodyParser = require('body-parser')
-
+const morgan = require('morgan')
 // body-parser
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+// 요청 로그 콘솔에 띄우기
+app.use(morgan('dev'))
+
 // 클라이언트 빌드파일 직접 제공받게 설정
 app.use(express.static(path.resolve(__dirname, '..', 'public/build')))
 
+// 시크릿 키 jwt
+app.set('jwt-secret', config.secret)
 // api
 const api = require('./api')
 app.use('/api', api)

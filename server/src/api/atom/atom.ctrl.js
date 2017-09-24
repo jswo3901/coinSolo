@@ -1,5 +1,14 @@
 const Atom = require('db/models/atom')
 
+/* 
+    POST /api/atom
+    {
+        contents
+        
+    }
+*/
+
+
 exports.postAtom = (req, res) => {
   const {
     contents

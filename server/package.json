@@ -6,7 +6,9 @@
   "dependencies": {
     "body-parser": "^1.18.1",
     "express": "^4.15.4",
-    "mongoose": "^4.11.12"
+    "jsonwebtoken": "^8.0.1",
+    "mongoose": "^4.11.12",
+    "morgan": "^1.8.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
