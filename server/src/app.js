@@ -30,7 +30,7 @@ app.use(function(req, res, next) {
 
 app.use(function(err, req, res, next) {
   res.status(err.status || 500)
-  res.sendFile(path.join(__dirname, '..', '/public/error.html'))
+  res.sendFile(path.join(__dirname, '..', '/public/build/error.html'))
 })
 
 module.exports = app

@@ -6,6 +6,7 @@ atom.route('/')
   .get(atomCtrl.getAtom)
 
 atom.route('/:id')
+  .put(atomCtrl.putAtom)
   .delete(atomCtrl.deleteAtom)
 
 module.exports = atom

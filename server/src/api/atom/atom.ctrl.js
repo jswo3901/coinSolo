@@ -10,14 +10,8 @@ const Atom = require('db/models/atom')
 
 
 exports.postAtom = (req, res) => {
-  const {
-    contents
-  } = req.body
-
-  const newAtom = new Atom({
-    contents: contents
-  })
-
+  const newAtom = new Atom()
+  newAtom.contents = req.body.contents
   newAtom.save((err) => {
     if (err) return console.error(err)
   })
@@ -36,5 +30,15 @@ exports.getAtom = (req, res) => {
 exports.deleteAtom = (req, res) => {
   Atom.remove({_id: req.params.id}, (err) => {
     if (err) return console.error(err)
+  })
+}
+
+exports.putAtom = (req, res) => {
+  const newContents = req.body.updateContents
+  Atom.findById({_id: req.params.id}, (req, atom) => {
+    atom.contents = newContents
+    atom.save((err) => {
+      if (err) return console.error(err)
+    })
   })
 }
