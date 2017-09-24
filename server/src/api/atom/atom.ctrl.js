@@ -19,11 +19,7 @@ exports.postAtom = (req, res) => {
   })
 
   newAtom.save((err) => {
-    if (err) {
-      console.error(err)
-    } else {
-      console.log('굿')
-    }
+    if (err) return console.error(err)
   })
 }
 
