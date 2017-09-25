@@ -1,7 +1,7 @@
 import app from './app'
 import http from 'http'
 import socket from 'socket.io'
-import ioEvents from 'api/socket'
+import ioEvents from './api/socket'
 
 // make http server
 const httpServer = http.createServer(app)
