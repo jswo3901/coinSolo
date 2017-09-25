@@ -3,50 +3,50 @@ import { Create, Update, List } from './path'
 // REDUX
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as homeCuteActions from './controller'
+import * as crudActions from './controller'
 import { fromJS } from 'immutable'
 // axios
 import axios from 'axios'
 
-class HomeCute extends Component {
+class Crud extends Component {
 
   // CREATE - input
   handleChange = (newContent) => {
-    const { homeCuteActions } = this.props
-    homeCuteActions.input({newContent})
+    const { crudActions } = this.props
+    crudActions.input({newContent})
   }
   // CREATE - api
   handleSubmit = () => {
     const { content } = this.props
-    axios.post('/api/cute', { content: content })
+    axios.post('/api/crud', { content: content })
   }
   
   // READ
   handleRead = () => {
-    const { homeCuteActions } = this.props
-    axios.get('/api/cute')
+    const { crudActions } = this.props
+    axios.get('/api/crud')
     .then((response) => {
       const newInfo = fromJS(response.data)
-      homeCuteActions.read({newInfo})
+      crudActions.read({newInfo})
     })
   }
 
   // DELETE
   handleDelete = (id) => {
-    axios.delete('/api/cute/' + id)
+    axios.delete('/api/crud/' + id)
   }
 
   // PUT - 선택
   handleSelect = (itemObject) => {
-    const { homeCuteActions } = this.props
+    const { crudActions } = this.props
     const { id, content } = itemObject
-    homeCuteActions.select( {newId:id, newContent:content} )
+    crudActions.select( {newId:id, newContent:content} )
   }
 
   // PUT - input
   handleChangeSelect = (newContent) => {
-    const { homeCuteActions } = this.props
-    homeCuteActions.selectInput({newContent})
+    const { crudActions } = this.props
+    crudActions.selectInput({newContent})
   }
 
   // PUT
@@ -55,7 +55,7 @@ class HomeCute extends Component {
     const { selectInfo } = this.props
     const selectObject = selectInfo.toJS()
     const id = selectObject.id
-    axios.put('/api/cute/'+id, { content: selectObject.content})
+    axios.put('/api/crud/'+id, { content: selectObject.content})
   }
 
   render() {
@@ -106,13 +106,13 @@ class HomeCute extends Component {
 export default connect(
 
   (state) => ({
-    content: state.homeCute.get('content'),
-    contentInfo: state.homeCute.get('contentInfo'),
-    selectInfo: state.homeCute.get('selectInfo')
+    content: state.homeCrud.get('content'),
+    contentInfo: state.homeCrud.get('contentInfo'),
+    selectInfo: state.homeCrud.get('selectInfo')
   }),
 
   (dispatch) => ({
-    homeCuteActions: bindActionCreators(homeCuteActions, dispatch)
+    crudActions: bindActionCreators(crudActions, dispatch)
   })
 
-)(HomeCute);
+)(Crud);

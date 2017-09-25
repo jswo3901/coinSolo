@@ -1,12 +1,12 @@
-// CUTE CONTROLLER
+// CRUD CONTROLLER
 import { createAction, handleActions } from 'redux-actions';
 import { Map, List } from 'immutable';
 
 // 액션 타입 정의
-const INPUT = 'homeCute/INPUT' // newContent
-const READ = 'homeCute/READ' // newInfo
-const SELECT = 'homeCute/SELECT' // newId, newContent
-const SELECT_INPUT = 'homeCute/SELECT_INPUT' // newContent
+const INPUT = 'crud/INPUT' // newContent
+const READ = 'crud/READ' // newInfo
+const SELECT = 'crud/SELECT' // newId, newContent
+const SELECT_INPUT = 'crud/SELECT_INPUT' // newContent
 
 // 액션 생성자
 export const input = createAction(INPUT); // newContent

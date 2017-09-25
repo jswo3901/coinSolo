@@ -1,18 +1,18 @@
 import React from 'react';
 import styles from './styles.css'
-import { HomeAtom, HomeBro, HomeCute } from './path'
+import { Chat, Room, Crud } from './path'
 
 const Home = () => {
   return (
     <div>
       <div className={styles.atomDiv}>
-        <HomeAtom />
+        <Chat />
       </div>
       <div className={styles.broDiv}>
-        <HomeBro />
+        <Room />
       </div>
-      <div className={styles.cuteDiv}>
-        <HomeCute />
+      <div className={styles.crudDiv}>
+        <Crud />
       </div>
     </div>
   )
