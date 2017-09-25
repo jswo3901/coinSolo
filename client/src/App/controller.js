@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import homeController from 'Home/controller';
+import homeCute from 'Home/HomeCute/controller';
 
 export default combineReducers({
-    homeController,
+    homeCute
 });

@@ -2,7 +2,9 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const cuteSchema = new Schema({
-  cuteValue: String
+  content: String
+}, {
+  versionKey: false
 })
 
 module.exports = mongoose.model('cute', cuteSchema)
