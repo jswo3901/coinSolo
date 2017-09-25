@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { welcome } from 'api/socket'
 
 class Room extends Component {
   render() {
@@ -8,7 +9,11 @@ class Room extends Component {
           <hr />
         -유저리스트-
           <hr />
-        -채팅리스트- 고정크기
+            <ul>
+              <li>
+                asd
+              </li>
+            </ul>
           <br />
         <input></input><button>send</button>
       </div>

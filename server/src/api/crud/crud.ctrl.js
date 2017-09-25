@@ -1,6 +1,6 @@
 const Crud = require('db/models/crud')
 
-exports.postCrud = (req, res) => {
+exports.post = (req, res) => {
   const newCrud = new Crud()
   newCrud.content = req.body.content
   newCrud.save((err) => {
@@ -8,7 +8,7 @@ exports.postCrud = (req, res) => {
   })
 }
 
-exports.getCrud = (req, res) => {
+exports.get = (req, res) => {
   Crud.find({}, {_id: 1, content: 1}, (err, cruds) => {
     if (err) {
       console.error(err)
@@ -18,13 +18,13 @@ exports.getCrud = (req, res) => {
   })
 }
 
-exports.deleteCrud = (req, res) => {
+exports.delete = (req, res) => {
   Crud.remove({_id: req.params.id}, (err) => {
     if (err) return console.error(err)
   })
 }
 
-exports.putCrud = (req, res) => {
+exports.put = (req, res) => {
   const content = req.body.content
   Crud.findById({_id: req.params.id}, (req, crud) => {
     crud.content = content

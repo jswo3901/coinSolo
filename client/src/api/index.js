@@ -1,1 +1,1 @@
-export const crud = '/api/crud/'
+exports.crud = '/api/crud/'

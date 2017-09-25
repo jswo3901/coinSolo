@@ -2,11 +2,11 @@ const crud = require('express').Router()
 const crudCtrl = require('./crud.ctrl')
 
 crud.route('/')
-  .post(crudCtrl.postCrud)
-  .get(crudCtrl.getCrud)
+  .post(crudCtrl.post)
+  .get(crudCtrl.get)
 
 crud.route('/:id')
-  .delete(crudCtrl.deleteCrud)
-  .put(crudCtrl.putCrud)
+  .delete(crudCtrl.delete)
+  .put(crudCtrl.put)
 
 module.exports = crud

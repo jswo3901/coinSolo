@@ -1,22 +1,36 @@
 import React, { Component } from 'react';
-import { subscribeToTimer } from 'api/socket'
 
 class Test extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timestamp: 'no timestamp yet'
+      name: '',
+      spend: ''
     };
-    subscribeToTimer((err, timestamp) => this.setState ({ 
-      timestamp })
-    );
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
+  
+  onSubmit(e){
+    e.preventDefault()
+    this.setState({
+      spend:this.state.name
+    })
+  }
+
+  onChange(e){
+    this.setState({
+      name:e.target.value
+    })
+  }
+
   render() {
     return (
       <div>
-        <p className="App-intro">
-        This is the timer value: {this.state.timestamp}
-        </p>
+        <form onSubmit={this.onSubmit}>
+          <input name="name" onChange={this.onChange} value={this.state.name}></input>
+          <button type="submit">보내기</button>
+        </form>
       </div>
     );
   }

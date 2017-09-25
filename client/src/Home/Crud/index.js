@@ -7,10 +7,14 @@ import * as crudActions from './controller'
 import { fromJS } from 'immutable'
 // axios
 import axios from 'axios'
-import { crud } from 'api'
+import api from 'api'
 
 class Crud extends Component {
-
+  // LIST LOAD
+  componentDidMount() {
+    this.handleRead()
+  }
+  
   // CREATE - input
   handleChange = (newContent) => {
     const { crudActions } = this.props
@@ -19,13 +23,14 @@ class Crud extends Component {
   // CREATE - api
   handleSubmit = () => {
     const { content } = this.props
-    axios.post(crud, { content: content })
+    axios.post(api.crud, { content: content })
+    this.handleRead()
   }
   
   // READ
   handleRead = () => {
     const { crudActions } = this.props
-    axios.get(crud)
+    axios.get(api.crud)
     .then((response) => {
       const newInfo = fromJS(response.data)
       crudActions.read({newInfo})
@@ -34,7 +39,8 @@ class Crud extends Component {
 
   // DELETE
   handleDelete = (id) => {
-    axios.delete(crud + id)
+    axios.delete(api.crud + id)
+    this.handleRead()
   }
 
   // PUT - 선택
@@ -56,7 +62,8 @@ class Crud extends Component {
     const { selectInfo } = this.props
     const selectObject = selectInfo.toJS()
     const id = selectObject.id
-    axios.put(crud+id, { content: selectObject.content})
+    axios.put(api.crud+id, { content: selectObject.content})
+    this.handleRead()
   }
 
   render() {
@@ -65,7 +72,7 @@ class Crud extends Component {
     const selectObject = selectInfo.toJS()
     const { 
       handleChange, handleSubmit, 
-      handleRead, handleSelect,
+      handleSelect,
       handleDelete,
       handleChangeSelect, handleUpdate
     } = this
@@ -83,8 +90,6 @@ class Crud extends Component {
           selectContent={selectObject.content}
           handleChangeSelect={handleChangeSelect}
         />
-        
-        <button onClick={handleRead}>새로고침</button>
         
         <ul>
         {contentObject.map((contentObject, i) => {
