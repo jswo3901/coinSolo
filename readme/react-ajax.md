@@ -11,3 +11,7 @@
 
 - **비동기-동기..**
   https://proinlab.com/archives/2138
+
+- **socket**
+  http://bcho.tistory.com/896
+  https://medium.com/dailyjs/combining-react-with-socket-io-for-real-time-goodness-d26168429a34

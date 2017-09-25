@@ -7,6 +7,7 @@ import * as crudActions from './controller'
 import { fromJS } from 'immutable'
 // axios
 import axios from 'axios'
+import { crud } from 'api'
 
 class Crud extends Component {
 
@@ -18,13 +19,13 @@ class Crud extends Component {
   // CREATE - api
   handleSubmit = () => {
     const { content } = this.props
-    axios.post('/api/crud', { content: content })
+    axios.post(crud, { content: content })
   }
   
   // READ
   handleRead = () => {
     const { crudActions } = this.props
-    axios.get('/api/crud')
+    axios.get(crud)
     .then((response) => {
       const newInfo = fromJS(response.data)
       crudActions.read({newInfo})
@@ -33,7 +34,7 @@ class Crud extends Component {
 
   // DELETE
   handleDelete = (id) => {
-    axios.delete('/api/crud/' + id)
+    axios.delete(crud + id)
   }
 
   // PUT - 선택
@@ -55,7 +56,7 @@ class Crud extends Component {
     const { selectInfo } = this.props
     const selectObject = selectInfo.toJS()
     const id = selectObject.id
-    axios.put('/api/crud/'+id, { content: selectObject.content})
+    axios.put(crud+id, { content: selectObject.content})
   }
 
   render() {

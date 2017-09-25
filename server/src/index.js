@@ -1,13 +1,22 @@
 import app from './app'
 import http from 'http'
+import socket from 'socket.io'
+import ioServer from 'api/socket'
 
-const server = http.createServer(app)
-const db = require('./db')
+// make http server
+const httpServer = http.createServer(app)
+// upgrade to socket.io server
+const io = socket.listen(httpServer)
 
 // db 연결
+const db = require('./db')
 db.connect()
 
-// 서버 연결
-server.listen(3001, function() {
-  console.log('server is connected on port 3001!!!')
+// socket.io
+ioServer(io)
+
+// server open
+const PORT = 3001
+httpServer.listen(PORT, () => {
+  console.log(`server is connected on port ${PORT}`)
 })
