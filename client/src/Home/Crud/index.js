@@ -106,9 +106,9 @@ class Crud extends Component {
 export default connect(
 
   (state) => ({
-    content: state.homeCrud.get('content'),
-    contentInfo: state.homeCrud.get('contentInfo'),
-    selectInfo: state.homeCrud.get('selectInfo')
+    content: state.crud.get('content'),
+    contentInfo: state.crud.get('contentInfo'),
+    selectInfo: state.crud.get('selectInfo')
   }),
 
   (dispatch) => ({

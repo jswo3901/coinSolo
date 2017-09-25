@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import homeCrud from 'Home/Crud/controller';
+import crud from 'Home/Crud/controller';
 
 export default combineReducers({
-    homeCrud
+    crud
 });
