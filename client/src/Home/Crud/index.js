@@ -78,7 +78,7 @@ class Crud extends Component {
     } = this
     return (
       <div>
-        <Create
+        <CreatecrudActions
           content={content}
           handleChange={handleChange}
           handleSubmit={handleSubmit}

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.css'
-import { Chat, Room, Crud } from './path'
+import { Chat, Room, Crud, SignUp } from './path'
 
 const Home = () => {
   return (
@@ -13,6 +13,9 @@ const Home = () => {
       </div>
       <div className={styles.crudDiv}>
         <Crud />
+      </div>
+      <div>
+        <SignUp />
       </div>
     </div>
   )
